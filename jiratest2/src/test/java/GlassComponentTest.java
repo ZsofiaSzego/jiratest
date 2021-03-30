@@ -36,7 +36,7 @@ public class GlassComponentTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/glasscomponent/glass_component.csv", numLinesToSkip = 1)
-    public void componentBox(String project, String name, String lead, String description, String assignee){
+    public void glassComponentTest_componentBox_isWorking(String project, String name, String lead, String description, String assignee){
         mainPage.navigateToGlass(project);
         String before = componentBox.getComponentCount();
         mainPage.navigateToComponents(project);
@@ -51,7 +51,7 @@ public class GlassComponentTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/glasscomponent/glass_component.csv", numLinesToSkip = 1)
-    public void noComponentTableBefore(String project, String name, String lead, String description, String assignee){
+    public void glassComponentTest_noComponentTableBefore_isWorking(String project, String name, String lead, String description, String assignee){
         mainPage.navigateToGlass(project);
         boolean hasNoCompInTheBeginning = componentTable.hasNoComponentsContainer();
         mainPage.navigateToComponents(project);
@@ -70,7 +70,7 @@ public class GlassComponentTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/glasscomponent/glass_component.csv", numLinesToSkip = 1)
-    public void hasComponentInTableBefore(String project, String name, String lead, String description, String assignee){
+    public void glassComponentTest_hasComponentInTableBefore_isWorking(String project, String name, String lead, String description, String assignee){
         String beforeId = addComp(project, "before"+name, lead, description, assignee);
         mainPage.navigateToGlass(project);
         int before = componentTable.getRowNum();
@@ -85,7 +85,7 @@ public class GlassComponentTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/glasscomponent/glass_component_all.csv", numLinesToSkip = 1)
-    public void allComponentCorrectInTable(String project, String name, String lead, String description, String assignee){
+    public void glassComponentTest_allComponentCorrectInTable_isWorking(String project, String name, String lead, String description, String assignee){
         String id = addComp(project, name, lead, description, assignee);
         mainPage.navigateToGlass(project);
         componentTable = new GlassComponentPage(utilDriver.getDriver(), id);
@@ -98,7 +98,7 @@ public class GlassComponentTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/glasscomponent/glass_component_all.csv", numLinesToSkip = 1)
-    public void editComponentCorrectInTable(String project, String name, String lead, String description, String assignee){
+    public void glassComponentTest_editComponentCorrectInTable_isWorking(String project, String name, String lead, String description, String assignee){
         String id = addComp(project, name, lead, description, assignee);
         mainPage.navigateToGlass(project);
         componentTable = new GlassComponentPage(utilDriver.getDriver(), id);
@@ -116,7 +116,7 @@ public class GlassComponentTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/glasscomponent/glass_component_all.csv", numLinesToSkip = 1)
-    public void addIssueToComponentCorrectInTable(String project, String name, String lead, String description, String assignee){
+    public void glassComponentTest_addIssueToComponentCorrectInTable_isWorking(String project, String name, String lead, String description, String assignee){
         String id = addComp(project, name, lead, description, assignee);
         mainPage.navigateToGlass(project);
         componentTable = new GlassComponentPage(utilDriver.getDriver(), id);

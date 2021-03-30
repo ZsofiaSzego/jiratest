@@ -31,7 +31,7 @@ class CreateIssueFormTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/fill_create_issue_form.csv", numLinesToSkip = 1)
-    public void fillCreateIssueForm(String project, String issue, String summary, boolean isCreate){
+    public void createIssueFromTest_fillCreateIssueForm_isWorking(String project, String issue, String summary, boolean isCreate){
         mainPage.fillCreateIssueForm(project, issue, summary, isCreate);
         boolean isCreatedCorrectly = mainPage.isIssueCreatedCorrectly(project, issue, summary);
         mainPage.deleteIssue();
@@ -40,7 +40,7 @@ class CreateIssueFormTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/cancel_in_issue_form.csv", numLinesToSkip = 1)
-    public void cancelInIssueForm(String project, String issue, String summary, boolean isCreate){
+    public void createIssueFromTest_cancelInIssueForm_isWorking(String project, String issue, String summary, boolean isCreate){
         mainPage.fillCreateIssueForm(project, issue, summary, isCreate);
         boolean isCreated = mainPage.isIssueCreatedCorrectly(project, issue, summary);
         Assertions.assertFalse(isCreated);
@@ -48,7 +48,7 @@ class CreateIssueFormTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/invalid_in_issue_form.csv", numLinesToSkip = 1)
-    public void invalidDataInIssueForm(String project, String issue, String summary, boolean isCreate){
+    public void createIssueFromTest_invalidDataInIssueForm_isRejected(String project, String issue, String summary, boolean isCreate){
         mainPage.fillCreateIssueForm(project, issue, summary, isCreate);
         boolean isIncorrect = form.isNoMatchPresent();
         Assertions.assertTrue(isIncorrect);
@@ -56,7 +56,7 @@ class CreateIssueFormTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/empty_summary_in_issue_form.csv", numLinesToSkip = 1)
-    public void emptySummaryIssueForm(String project, String issue, String summary, boolean isCreate){
+    public void createIssueFromTest_emptySummaryIssueForm_isRejected(String project, String issue, String summary, boolean isCreate){
         mainPage.fillCreateIssueForm(project, issue, summary, isCreate);
         boolean isInCorrect = form.isErrorPresent();
         Assertions.assertTrue(isInCorrect);

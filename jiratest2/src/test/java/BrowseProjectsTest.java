@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -26,10 +27,10 @@ public class BrowseProjectsTest {
         viewAllProjectsPage = new ViewAllProjectsPage(utilDriver.getDriver());
     }
 
-    //    @AfterEach
-//    public void teardown() {
-//        driver.close();
-//    }
+    @AfterEach
+    public void teardown() {
+        utilDriver.close();
+    }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/browseProjects/search_certain_projects_from_view_all_projects.csv", numLinesToSkip = 1)

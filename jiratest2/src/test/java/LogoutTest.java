@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.api.BeforeEach;
 import pages.DashboardPage;
@@ -22,10 +23,10 @@ public class LogoutTest {
         logoutPage = new LogoutPage(driver.getDriver());
     }
 
-    //    @AfterEach
-//    public void teardown() {
-//        driver.close();
-//    }
+        @AfterEach
+    public void teardown() {
+        driver.close();
+    }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/login/successful_login.csv", numLinesToSkip = 1)

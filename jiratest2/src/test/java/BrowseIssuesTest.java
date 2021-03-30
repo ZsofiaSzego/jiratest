@@ -32,7 +32,7 @@ public class BrowseIssuesTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/browseissue/browse_issue_in_project.csv", numLinesToSkip = 1)
-    public void browseIssueInProject(String project,String fullProjectName, String id){
+    public void browseIssueTest_browseIssueInProject_isWorking(String project,String fullProjectName, String id){
         mainPage.navigateToIssue(project, id);
         boolean actual = browseIssuePage.isIssueInProject(fullProjectName, id);
 
@@ -41,7 +41,7 @@ public class BrowseIssuesTest {
 
     @ParameterizedTest
     @CsvSource("MTP,Main Testing Project, MTP-2")
-    public void nonexistentIssue(String project,String fullProjectName, String id){
+    public void browseIssueTest_nonexistentIssue_isNotAvailable(String project,String fullProjectName, String id){
         mainPage.navigateToIssue(project, id);
         boolean actual = browseIssuePage.isIssueInProject(fullProjectName, id);
 
@@ -50,7 +50,7 @@ public class BrowseIssuesTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/browseissue/browse_issue.csv", numLinesToSkip = 1)
-    public void browseIssueShowProjectCorrectly(String project,String fullProjectName, String id){
+    public void browseIssueTest_browseIssueShowProjectCorrectly_isWorking(String project,String fullProjectName, String id){
         mainPage.navigateToIssue(project, id);
         browseIssuePage.load();
         String actual = browseIssuePage.getProjectNameVal();
@@ -60,7 +60,7 @@ public class BrowseIssuesTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/browseissue/browse_issue.csv", numLinesToSkip = 1)
-    public void browseIssueShowSummaryCorrectly(String project,String fullProjectName, String id, String issuetype, String summary){
+    public void browseIssueTest_browseIssueShowSummaryCorrectly_isWorking(String project,String fullProjectName, String id, String issuetype, String summary){
         mainPage.navigateToIssue(project, id);
         browseIssuePage.load();
         String actual = browseIssuePage.getSummaryVal();
@@ -70,7 +70,7 @@ public class BrowseIssuesTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/browseissue/browse_issue.csv", numLinesToSkip = 1)
-    public void browseIssueShowIssueCorrectly(String project,String fullProjectName, String id, String issuetype){
+    public void browseIssueTest_browseIssueShowIssueCorrectly_isWorking(String project,String fullProjectName, String id, String issuetype){
         mainPage.navigateToIssue(project, id);
         browseIssuePage.load();
         String actual = browseIssuePage.getIssueTypeVal();
@@ -80,7 +80,7 @@ public class BrowseIssuesTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/browseissue/browse_issue.csv", numLinesToSkip = 1)
-    public void browseIssueShowProjectidCorrectly(String project,String fullProjectName, String id){
+    public void browseIssueTest_browseIssueShowProjectIdCorrectly_isWorking(String project,String fullProjectName, String id){
         mainPage.navigateToIssue(project, id);
         browseIssuePage.load();
         String actual = browseIssuePage.getId();

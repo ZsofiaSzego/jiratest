@@ -32,7 +32,7 @@ class CreateIssueFromProjectTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/create_issue_from_project.csv", numLinesToSkip = 1)
-    public void createIssueFromProject(String project, String issue, String summary, String longProjectName){
+    public void createIssueFromProjectTest_createIssueFromProject_isWorking(String project, String issue, String summary, String longProjectName){
         createIssuePage = new CreateIssueFromProject(utilDriver.getDriver(), project );
         createIssuePage.createIssue(issue, summary);
         page = new CreateIssueForm(utilDriver.getDriver());
@@ -44,7 +44,7 @@ class CreateIssueFromProjectTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/create_issue_from_project.csv", numLinesToSkip = 1)
-    public void cancelCreateIssueFromProject(String project, String issue, String summary, String longProjectName){
+    public void createIssueFromProjectTest_cancelCreateIssueFromProject_isWorking(String project, String issue, String summary, String longProjectName){
         createIssuePage = new CreateIssueFromProject(utilDriver.getDriver(), project );
         createIssuePage.cancelIssue(issue, summary);
         page = new CreateIssueForm(utilDriver.getDriver());
@@ -55,7 +55,7 @@ class CreateIssueFromProjectTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/empty_summary_create_issue_from_project.csv")
-    public void emptySummaryCreateIssueFromProject(String project) {
+    public void createIssueFromProjectTest_emptySummaryCreateIssueFromProject_isRejected(String project) {
         createIssuePage = new CreateIssueFromProject(utilDriver.getDriver(), project );
         createIssuePage.clickCreateIssue();
         Assertions.assertTrue(createIssuePage.isError());
@@ -63,7 +63,7 @@ class CreateIssueFromProjectTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue/invalid_issuetype_create_issue_from_project.csv")
-    public void invalidIssueCreateIssueFromProject(String project, String issue){
+    public void createIssueFromProjectTest_invalidIssueCreateIssueFromProject_isRejected(String project, String issue){
         createIssuePage = new CreateIssueFromProject(utilDriver.getDriver(), project );
         createIssuePage.clickCreateIssue();
         boolean hasError = createIssuePage.isValidIssue(issue);
